@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
   steps:
-    - uses: actions_checkout@v3 
+    - uses: actions/checkout@v3 
     - name: Configure cmake
       run: cmake -B ${{ github.workspace }}/build -S ${{ github.workspace }}
     - name: Build 
