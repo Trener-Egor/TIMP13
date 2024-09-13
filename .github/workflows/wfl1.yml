@@ -1,0 +1,22 @@
+name: C++ timp
+
+on: 
+  push:
+    branches: [ main ]
+  pull_request: 
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+    - uses: actions_checkout@v3 
+    - name: Configure cmake
+      run: cmake -B ${{ github.workspace }}/build -S ${{ github.workspace }}
+    - name: Build 
+      run: cmske --build ${{ github.workspace }}/build --config Release
+      name: Test
+      working-directory: ${{ github.workspace }}/build 
+      run: ctest -C Release
+
